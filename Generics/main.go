@@ -7,6 +7,12 @@ type Person struct {
 	age  int
 }
 
+type Number interface {
+	int | float32
+}
+
+type Num[T Number] = T
+
 func main() {
 
 	listPerson := []Person{
@@ -29,6 +35,8 @@ func main() {
 	fmt.Println(ConPers(listPerson, firstPerson))
 	fmt.Println(ConPers(listInt, 6))
 
+	PrintAny(1, 2, 3, 5)
+
 }
 
 func ConPers[T comparable](list []T, value T) bool {
@@ -40,11 +48,15 @@ func ConPers[T comparable](list []T, value T) bool {
 	return false
 }
 
-func SumSmth[T int | float32](numbers []T) T {
+func SumSmth[T Number](numbers []T) T {
 	var sum T
 
 	for _, i := range numbers {
 		sum += i
 	}
 	return sum
+}
+
+func PrintAny[T any](num ...T) {
+	fmt.Println(num)
 }
