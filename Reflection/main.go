@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+
 	Inspect(12, 22, 21)
 	Inspect("Strochka")
 }
