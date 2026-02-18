@@ -21,8 +21,8 @@ func main() {
 		close(ch)
 	}()
 
-	wg.Add(16)
-	for range 16 {
+	wg.Add(5)
+	for range 5 {
 		go func() {
 			defer wg.Done()
 			for url := range ch {
